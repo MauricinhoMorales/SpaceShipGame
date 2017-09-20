@@ -1,5 +1,7 @@
 package graphics;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -15,6 +17,15 @@ public class Loader {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static Font loadFont(String path, int size) {
+			try {
+				return Font.createFont(Font.TRUETYPE_FONT, Loader.class.getResourceAsStream(path)).deriveFont(Font.PLAIN, size);
+			} catch (FontFormatException | IOException e) {
+				e.printStackTrace();
+				return null;
+			}
 	}
 	
 }
